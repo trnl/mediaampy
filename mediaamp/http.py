@@ -121,7 +121,7 @@ class Session(object):
             wrap_http_error(e)
 
         try:
-            data = response.json()
+            data = response.json() if response.text else {}
         except ValueError:
             raise MediaAmpError('Response body can not be read as JSON. ')
 
